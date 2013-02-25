@@ -6,23 +6,27 @@
            opennlp.tools.tokenize.SimpleTokenizer
            java.io.StringReader))
 
-(defn simple-tokenizer [text]
+(defn simple-tokenizer
   "Uses the OpenNLP SimpleTokenizer which tokenizes on character class to tokenize the given text.
 Returns a vector containing the tokens."
+  [text]
   (vec (.tokenize (SimpleTokenizer/INSTANCE) text)))
 
-(defn lucene-tokenizer [analyzer text]
+(defn lucene-tokenizer
   "Uses the supplied Lucene Analyzer to tokenize the given text. Returns a vector containing the tokens."
-    (let [ tokenstream (.tokenStream analyzer "field" (StringReader. text))
+  [analyzer text]
+  (let [ tokenstream (.tokenStream analyzer "field" (StringReader. text))
         termatt (.addAttribute tokenstream TermAttribute)]
     (take-while identity (repeatedly #(when (.incrementToken tokenstream) (.term termatt))))))
 
-(defn standard-tokenizer [text]
+(defn standard-tokenizer  
   "Uses the Lucene StandardTokenizer to tokenize the given text. Returns a vector containing
 the tokens."
+  [text]
   (lucene-tokenizer (StandardAnalyzer. Version/LUCENE_31) text))
 
-(defn whitespace-tokenizer [text]
+(defn whitespace-tokenizer
   "Uses the Lucene WhitespaceTokenizer to tokenize the given text. Returns a vector containing
 the tokens."
+  [text]
   (lucene-tokenizer (WhitespaceAnalyzer. Version/LUCENE_31) text))

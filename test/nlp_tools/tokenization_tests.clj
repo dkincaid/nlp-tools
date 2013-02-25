@@ -1,6 +1,8 @@
-(ns nlp-tools.test.tokenization
+(ns nlp-tools.tokenization-tests
   (:use [nlp-tools.tokenization]
         [midje.sweet]))
+
+(fact (simple-tokenizer "token1-token2") => ["token" "1" "-" "token" "2"])
 
 (facts "About the simple-tokenizer"
   (simple-tokenizer "token1-token2") => ["token" "1" "-" "token" "2"])

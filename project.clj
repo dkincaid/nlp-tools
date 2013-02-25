@@ -5,7 +5,7 @@
             :distribution :repo
             :comments "same as Clojure"}
   :min-lein-version "2.0.0"
-  :warn-on-reflection true
+;  :warn-on-reflection true
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.apache.lucene/lucene-core "3.5.0"]
                  [org.apache.lucene/lucene-spellchecker "3.5.0"]

@@ -1,4 +1,4 @@
-(ns nlp-tools.corenlp.clj
+(ns nlp-tools.corenlp
   "The functions in this namespace wrap the Stanford coreNLP Java library. Start by calling 
 the function (annotate) with a string holding the text that you want annotated. That function
 returns an Annotation object. You can get the sentences from the annotation object using the 
@@ -30,7 +30,7 @@ annotations that were applied to your text."
   "Create a StanfordCoreNLP pipeline."
   ([] (pipeline (doto (Properties.) 
                            (.put "annotators" "tokenize, ssplit, pos, lemma, ner, parse, dcoref"))))
-  ([properties] (StanfordCoreNLP. props)))
+  ([properties] (StanfordCoreNLP. properties)))
 
 (defn annotate
   "Annotate the given text"

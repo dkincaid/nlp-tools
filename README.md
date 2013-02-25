@@ -1,4 +1,4 @@
-# nlp-tools
+# Clojure nlp-tools
 A set of Clojure functions that make NLP tasks a little bit easier. Utilizes
 [Apache Lucene](http://lucene.apache.org), [Apache OpenNLP](http://opennlp.apache.org), [Stanford coreNLP](http://nlp.stanford.edu/software/corenlp.shtml) libraries.
 

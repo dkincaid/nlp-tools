@@ -1,5 +1,5 @@
-(defproject nlp-tools "0.0.1"
-  :description "A set of NLP tools made easy to use."
+(defproject nlp-tools "0.0.1-SNAPSHOT"
+  :description "A set of Clojure NLP tools made easy to use."
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.apache.lucene/lucene-core "3.5.0"]
                  [org.apache.lucene/lucene-spellchecker "3.5.0"]

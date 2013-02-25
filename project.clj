@@ -12,4 +12,6 @@
                  [org.apache.opennlp/opennlp-tools "1.5.2-incubating"]
                  [edu.stanford.nlp/stanford-corenlp "1.3.4"]
                  [edu.stanford.nlp/stanford-corenlp "1.3.4" :classifier "models"]]
-  :profiles { :dev { :dependencies [[midje "1.5-beta2"]]}})
+  :profiles { :dev { :dependencies [[midje "1.5-beta2"]]}}
+  :codox {:src-dir-uri "http://github.com/dkincaid/nlp-tools/blob/develop"}
+)

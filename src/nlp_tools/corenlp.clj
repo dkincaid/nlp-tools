@@ -12,7 +12,7 @@ annotations that were applied to your text."
     CoreAnnotations$TextAnnotation CoreAnnotations$PartOfSpeechAnnotation
     CoreAnnotations$NamedEntityTagAnnotation]
    [edu.stanford.nlp.trees TreeCoreAnnotations$TreeAnnotation]
-   [edu.stanford.nlp.trees.semgraph SemanticGraphCoreAnnotations$CollapsedCCProcessedDependenciesAnnotation]
+   [edu.stanford.nlp.semgraph SemanticGraphCoreAnnotations$CollapsedCCProcessedDependenciesAnnotation]
    [edu.stanford.nlp.dcoref CorefCoreAnnotations$CorefChainAnnotation]))
 
 (def slash-join

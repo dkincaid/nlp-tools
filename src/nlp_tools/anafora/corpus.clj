@@ -24,8 +24,17 @@
       (write-doc destination (get d doc-id-field)
                    (get d text-field)) adf)))
 
+(defn process-directory
+  "Convert all the Avro files found in the given directory into an Anafora corpus."
+  [input-dir output-dir doc-id-field text-field]
+  (let [files (filter #(str/ends-with? (.getName %) ".avro") (file-seq (io/file input-dir)))]
+    (doseq [avro-file files]
+      (info "Processing file " avro-file)
+      (avro->corpus doc-id-field text-field avro-file output-dir))))
+
 (def cli-options
   [["-a" "--avro-file FILE" "Avro file name to read from"]
+   ["-d" "--directory DIR" "Directory of Avro files to read from"]
    ["-c" "--corpus-dir DIR" "Corpus directory to write into"]
    ["-k" "--id-field FIELD" "Document id field in the Avro schema"]
    ["-t" "--text-field FIELD" "Text field in the Avro schema"]
@@ -54,7 +63,13 @@
     (cond
       (:help options) (exit 0 (usage summary))
       errors (exit 1 (error-msg errors)))
-    (avro->corpus (keyword (:id-field options))
-                  (keyword (:text-field options))
-                  (:avro-file options)
-                  (:corpus-dir options))))
+    (if (:avro-file options)
+     (avro->corpus (keyword (:id-field options))
+                   (keyword (:text-field options))
+                   (:avro-file options)
+                   (:corpus-dir options))
+     (process-directory (:directory options)
+                        (:corpus-dir options)
+                        (keyword (:id-field options))
+                        (keyword (:text-field options)))
+     )))
